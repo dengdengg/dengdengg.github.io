@@ -1,0 +1,225 @@
+  /* 样式重置 */
+  * {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+  }
+  .w{
+    width: 1000px;
+    margin:  0 auto;
+  }
+  /* 头部样式 */
+  .header_outer {
+    border-bottom: 4px solid #176fbb;
+  }
+  .header {
+    width: 1000px;
+    /* height: 100px; */ /* ***************** */
+    margin: 0 auto;
+    margin-top: 14px;
+  }
+  .header_top {
+    overflow: hidden;
+  }
+  .header_top a {
+    color: #3c3c3c;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .header_top .search {
+    float: right;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #3c3c3c;
+    border-left: none;
+    background: url(../img/search.png) center center no-repeat;
+    border-radius: 0 10px 10px 0;
+  }
+  .header_top .ipt {
+    box-sizing: border-box;
+    float: right;
+    width: 154px;
+    height: 28px;
+    border: 1px solid #3c3c3c;
+    padding: 0 5px;
+    /* outline是控制输入框获取焦点的时候的状态 */
+    outline: none;
+  }
+  .header_top .boot {
+    float: right;
+    margin: 5px 16px 0px 7px;
+  }
+  .header_top .boot_num {
+    float: right;
+    width: 25px;
+    height: 18px;
+    padding-top: 6px;
+    margin-left: 15px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    line-height: 18px;
+    background: url(../img/boot.png) center center no-repeat;
+  }
+
+  .header_top .login,
+  .header_top .register {
+    float: right;
+
+    margin-top: 5px;
+
+    width: 60px;
+    height: 19px;
+    line-height: 19px;
+    text-align: center;
+  }
+  .header_top .login {
+    border-left: 2px solid #3c3c3c;
+    border-right: 2px solid #3c3c3c;
+  }
+  .header_top .register {
+    border-left: 2px solid #3c3c3c;
+  }
+  .header_top .tel {
+    float: right;
+
+    height: 20px;
+    color: #ffa000;
+    font-weight: bold;
+
+    padding-left: 20px;
+    margin: 4px 22px 0px 0px;
+
+    background: url(../img/tel.png) left center no-repeat;
+  }
+
+  .header_nav {
+    margin-top: -25px;
+  }
+
+  .header_nav a {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #3c3c3c;
+    margin-left: 40px;
+  }
+
+  .header_nav .logo {
+    display: inline-block;
+    vertical-align: -6px;
+  }
+  .header_nav .logo img {
+    width: 132px;
+    height: 90px;
+  }
+
+  .header_nav .home {
+    width: 21px;
+    height: 21px;
+    display: inline-block;
+    vertical-align: -4px;
+
+    background: url(../img/home.png) center center no-repeat;
+  }
+  .center{
+    line-height: 50px;
+  }
+  .bigimg{
+    height: 346px;
+    background: url(../img/banner.jpg)center center no-repeat;
+  }
+  .main{
+    overflow: hidden;
+  }
+  .liwu{
+    background: url(../img/liwu.png) left 450px center no-repeat;
+  }
+  .liwu span{
+      display: inline-block;
+      color:crimson;
+      font-weight: 900;
+      font-size: 30px;
+      line-height: 98px;
+      margin-left: 500px;
+  }
+  .main_list{
+    overflow: hidden;
+    
+  }
+  .main_list{
+    width: 1050px;
+  }
+.main_list ul li{
+   float: left;
+  }
+.main_list img{
+    height: 220px;
+    width: 313px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+}
+.yeqian{
+    overflow: hidden;
+}
+.yeqian ul{
+margin-left: 400px;
+}
+.yeqian ul li {
+    float: left;
+    margin-left: 10px;
+}
+.yeqian ul li a{
+    color: #3c3c3c;
+}
+.yeqian ul li:nth-child(5){
+    height: 20px;
+    width: 30px;
+    background-color: #6e6e6e;
+    text-align: center;
+}
+
+.footer{
+    width: 100%;
+    background-color:#023c4d ;
+    margin-top: 35px;
+}
+.footer_txt {
+    height: 100px;
+    color: aliceblue;
+}
+.footer_txt ul {
+    margin-left: 70px;
+}
+.footer_txt ul li{
+    margin-left: 80px;
+    float: left;
+}
+.footer_txt ul li a{
+   color: white;
+   font-size: 12px;
+}
+.boder2{
+    border-top:2px solid white   ;
+ }
+.nes {
+    height: 40px;
+    line-height: 40px;
+    background-color: #023c4d ;
+    text-align: center;
+    font-size: 12px;
+    color: aliceblue;
+}
+.nes a{
+    text-decoration: none;
+}
+.zaixian{
+    height: 20px;
+    width: 130px;
+    background-color: #fffefd;
+    border-radius: 10px;
+    color: #3c3c3c;
+    text-align: center;
+    margin-top: 10px;
+}
