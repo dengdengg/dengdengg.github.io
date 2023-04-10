@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 600px;
+            height: 600px;
+            border: 1px solid;
+            margin: 0 auto;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container"></div>
+    <script>
+        function Rect(x, y, color, container) {
+            this.ele = null;
+            this.x = x;
+            this.y = y;
+            this.color = color;
+            this.container = container;
+            this.createRect();
+        }
+        Rect.prototype.createRect = function () {
+            // 创建div 生成方块；
+            this.ele = document.createElement("div");
+            this.ele.style.width = "20px";
+            this.ele.style.height = "20px";
+            this.ele.style.left = this.x + "px";
+            this.ele.style.top = this.y + "px";
+            this.ele.style.position = "absolute";
+            this.ele.style.border = "1px solid";
+            this.ele.style.background = this.color;
+            this.container.appendChild(this.ele);
+        }
+
+
+        var food;
+        function Snake(container) {
+            this.container = container;
+            this.bodyArr = [];
+            this.dir = "right"; // 蛇的方向 
+            this.createBody();
+        }
+        Snake.prototype.createBody = function () {
+            // 20
+            // i=0  ----> 0
+            // i=1 ----> 20
+            // i=2 ---->100
+            for (var i = 0; i < 5; i++) {
+                if (i === 4) {
+                    this.bodyArr.push(new Rect(i * 20, 0, "red", this.container));
+                } else {
+                    this.bodyArr.push(new Rect(i * 20, 0, "blue", this.container));
+                }
+            }
+        }
+
+        Snake.prototype.move = function () {
+            var head = this.bodyArr[this.bodyArr.length - 1];
+
+            // 蛇头移动一个距离 
+            var numx = parseInt(head.ele.style.left);
+            var numy = parseInt(head.ele.style.top);
+
+            // 在以前蛇头的地方添加一个 
+            this.bodyArr.splice(this.bodyArr.length - 1, 0, new Rect(numx, numy, "blue", this.container))
+
+            switch (this.dir) {
+                case 'right':
+                    head.ele.style.left = numx + 20 + "px";
+                    break;
+                case 'left':
+                    head.ele.style.left = numx - 20 + "px";
+                    break;
+                case 'up':
+                    head.ele.style.top = numy - 20 + "px";
+                    break;
+                case 'down':
+                    head.ele.style.top = numy + 20 + "px";
+                    break;
+            }
+
+            // 判断 如果 蛇头的坐标 和 食物的坐标一样了 那么就碰撞了，把 蛇的身体加一个  ，食物要重新生成；
+            if (head.ele.style.left === food.rect.ele.style.left && head.ele.style.top === food.rect.ele.style.top) {
+                console.log("吃到食物了");
+                // 1.蛇的身体加一个方块 （不删除方块就是添加一个方块）； 2.食物要重新生成；
+                food.rect.ele.remove(); // 删除食物 
+                food = new Food(this.container);  // 重新生成一个食物；
+            } else {
+                // 没有碰到 那么就删除最后的方块；
+                // 删除最后一个方块 ：1. 把数组里的 rect删除   2.dom里的元素删除
+                var res = this.bodyArr.shift();  //删除数组的第一个元素
+                res.ele.remove();
+            }
+
+
+
+
+        }
+
+
+        // 创建食物 
+        function Food(container) {
+            this.x = this.randomNum(0, 11) * 20;
+            this.y = this.randomNum(0, 11) * 20;
+            this.rect = new Rect(this.x, this.y, "green", container);
+        }
+        Food.prototype.randomNum = function (min, max) {
+            return parseInt(Math.random() * (max - min + 1)) + min;
+        }
+
+        food = new Food(document.querySelector(".container"));
+
+        var snake = new Snake(document.querySelector(".container"));
+        setInterval(function () {
+            snake.move();
+        }, 100)
+        // snake.move();
+
+
+
+        // 监听键盘事件 控制 方向；
+
+        document.onkeydown = function (e) {
+            var key = e.key;
+            // console.log(key);
+            switch (key) {
+                case 'ArrowRight':
+                    if (snake.dir !== "left") {
+                        snake.dir = "right";
+                    }
+                    break;
+                case 'ArrowLeft':
+                    if (snake.dir !== "right") {
+                        snake.dir = "left";
+                    }
+                    break;
+                case 'ArrowUp':
+                    if (snake.dir !== "down") {
+                        snake.dir = "up";
+                    }
+                    break;
+                case 'ArrowDown':
+                    if (snake.dir !== "up")
+                        snake.dir = "down";
+                    break;
+            }
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
